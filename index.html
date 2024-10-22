@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <title>Frontend Mentor | Article preview component</title>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <script
+      src="https://kit.fontawesome.com/57ba5ef873.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      /* utility class*/
+      .flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      body {
+        flex-direction: column;
+        height: 100vh;
+        background-color: #f4f6ff;
+        gap: 20px;
+      }
+      .container {
+        width: 50vw;
+        display: flex;
+        border-radius: 10px;
+        background-color: #ffff;
+      }
+      .right {
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        padding: 30px;
+        gap: 15px;
+      }
+
+      .left {
+        width: 40%;
+      }
+      .left img {
+        width: 100%;
+        object-fit: contain;
+      }
+      .person-container {
+        justify-content: space-between;
+        height: 70px;
+        position: relative;
+      }
+      .person {
+        gap: 10px;
+        height: 100%;
+      }
+      .person img {
+        height: 100%;
+        border-radius: 50%;
+      }
+      .info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      button {
+        border-radius: 50%;
+        padding: 15px;
+        cursor: pointer;
+        border: none;
+        margin-right: 50px;
+      }
+      h3,
+      h5 {
+        color: #686d76;
+      }
+      #share {
+        position: absolute;
+        right: -10px;
+        top: -50px;
+        padding: 20px;
+        background-color: #373a40;
+        gap: 15px;
+        display: none;
+        color: white;
+        border-radius: 10px;
+      }
+
+      @media only screen and (max-width: 450px) {
+        .container {
+          flex-direction: column;
+          width: 100vw;
+          justify-self: center;
+          align-items: center;
+        }
+        .right {
+          width: 100%;
+        }
+        .left {
+          width: 100%;
+        }
+        .person-container {
+          display: flex;
+        }
+        button {
+          position: absolute;
+          z-index: 1;
+          right: -40px;
+        }
+        #share {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          padding: 20px;
+          background-color: #373a40;
+          gap: 15px;
+          display: none;
+          color: white;
+          border-radius: 10px;
+          width: 100%;
+          height: 70px;
+          border-radius: 0px;
+        }
+      }
+    </style>
+  </head>
+  <body class="flex">
+    <div class="container">
+      <div class="left">
+        <img src="./images/drawers.jpg" alt="" />
+      </div>
+      <div class="right">
+        <h3>
+          Shift the overall look and feel by adding these wonderful touches to
+          furniture in your home
+        </h3>
+        <p>
+          Ever been in a room and felt like something was missing? Perhaps it
+          felt slightly bare and uninviting. I’ve got some simple tips to help
+          you make any room feel complete.
+        </p>
+        <div class="person-container flex">
+          <div class="person flex" id="person">
+            <img src="./images/avatar-michelle.jpg" alt="" />
+            <div class="info">
+              <h5>Michelle Appleton</h5>
+              <p>28 Jun 2020</p>
+            </div>
+          </div>
+          <button>
+            <i class="fa-solid fa-share" style="color: gray"></i>
+          </button>
+          <div class="flex" id="share">
+            <p style="color: #686d76">share</p>
+            <i class="fa-brands fa-facebook"></i>
+            <i class="fa-brands fa-x-twitter"></i>
+            <i class="fa-brands fa-linkedin"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="https://github.com/RahulPanwar05" target="_blank">Rahul Panwar</a
+      >.
+    </div>
+    <script>
+      const button = document.querySelector("button");
+      const share = document.getElementById("share");
+      const body = document.querySelector("body");
+      const person = document.getElementById("person");
+      const screenWidth = window.innerWidth;
+
+      button.addEventListener("click", function (e) {
+        e.stopPropagation();
+        share.style.display = "flex";
+        console.log(window.innerWidth);
+        if (screenWidth < 500) {
+          person.style.display = "none";
+        }
+      });
+      body.addEventListener("click", function () {
+        share.style.display = "none";
+        if (screenWidth < 500) {
+          person.style.display = "flex";
+        }
+      });
+    </script>
+  </body>
+</html>
